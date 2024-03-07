@@ -96,6 +96,23 @@ def generate_scatterplot_data(num_points=100, min_value=0, max_value=100):
   df = pd.DataFrame({"X": x, "Y": y})
   return df
 
+def generate_categorical_scatterplot_data(num_points=300, min_value=0, max_value=100, colors=['red', 'blue', 'green']):
+  """
+  Generate data for a scatter plot.
+
+  Parameters:
+    num_points (int): Number of data points.
+    min_value (int): Minimum value for data points.
+    max_value (int): Maximum value for data points.
+
+  Returns:
+    DataFrame: Pandas DataFrame containing the generated data.
+  """
+  x = np.random.randint(min_value, max_value, size=num_points)
+  y = np.random.randint(min_value, max_value, size=num_points)
+  categories = np.random.choice(colors, size=num_points)
+  df = pd.DataFrame({"X": x, "Y": y, "Category": categories})
+  return df
 
 def generate_histogram_data(num_points=100000, min_value=0, max_value=100):
   """
@@ -141,8 +158,8 @@ if __name__=='__main__':
   generation_functions = [
     generate_histogram_data, generate_barplot_data, generate_grouped_barplot_data,
     generate_heatmap_data, generate_multiple_signal_plot_data, generate_scatterplot_data, 
-    generate_signal_plot_data]
-  dataset_name = ['histogram', 'barplot', 'grouped_barplot', 'heatmap', 'multiple_signal_plot', 'scatterplot', 'signal_plot']
+    generate_signal_plot_data, generate_categorical_scatterplot_data]
+  dataset_name = ['histogram', 'barplot', 'grouped_barplot', 'heatmap', 'multiple_signal_plot', 'scatterplot', 'signal_plot', 'categorical_scatterplot']
 
   os.makedirs('dataset', exist_ok=True)
   for index, generation_function in enumerate(generation_functions):

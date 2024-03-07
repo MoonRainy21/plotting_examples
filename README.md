@@ -19,3 +19,4 @@
 ## Scatter Plot
 ![](outputs_example/scatterplot.png)
 ![](outputs_example/scatterplot_with_histogram.png)
+![](outputs_example/categorical_scatterplot.png)
